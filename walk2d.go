@@ -123,8 +123,8 @@ func Ellipses(x1, y1, x2, y2 int, fn DoFn) bool {
 }
 
 func Near8Way(ox, oy int, fn DoFn) bool {
-	for i := uint8(1); i <= 8; i++ {
-		x, y := ox+direction.Dir2Info[i].Vt[0], oy+direction.Dir2Info[i].Vt[1]
+	for i := direction.Dir_Type(1); i <= 8; i++ {
+		x, y := ox+i.Vt()[0], oy+i.Vt()[1]
 		if fn(x, y) {
 			return true
 		}
@@ -132,8 +132,8 @@ func Near8Way(ox, oy int, fn DoFn) bool {
 	return false
 }
 func Near4Way(ox, oy int, fn DoFn) bool {
-	for i := uint8(1); i <= 8; i += 2 {
-		x, y := ox+direction.Dir2Info[i].Vt[0], oy+direction.Dir2Info[i].Vt[1]
+	for i := direction.Dir_Type(1); i <= 8; i += 2 {
+		x, y := ox+i.Vt()[0], oy+i.Vt()[1]
 		if fn(x, y) {
 			return true
 		}
@@ -141,4 +141,4 @@ func Near4Way(ox, oy int, fn DoFn) bool {
 	return false
 }
 
-type PosList [][2]int
+// type PosList [][2]int
