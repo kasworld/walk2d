@@ -1,4 +1,4 @@
-// Copyright 2015 SeukWon Kang (kasworld@gmail.com)
+// Copyright 2015,2016,2017,2018,2019 SeukWon Kang (kasworld@gmail.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -123,8 +123,8 @@ func Ellipses(x1, y1, x2, y2 int, fn DoFn) bool {
 }
 
 func Near8Way(ox, oy int, fn DoFn) bool {
-	for i := direction.Dir_Type(1); i <= 8; i++ {
-		x, y := ox+i.Vt()[0], oy+i.Vt()[1]
+	for i := direction.Direction_Type(1); i <= 8; i++ {
+		x, y := ox+i.Vector()[0], oy+i.Vector()[1]
 		if fn(x, y) {
 			return true
 		}
@@ -132,8 +132,8 @@ func Near8Way(ox, oy int, fn DoFn) bool {
 	return false
 }
 func Near4Way(ox, oy int, fn DoFn) bool {
-	for i := direction.Dir_Type(1); i <= 8; i += 2 {
-		x, y := ox+i.Vt()[0], oy+i.Vt()[1]
+	for i := direction.Direction_Type(1); i <= 8; i += 2 {
+		x, y := ox+i.Vector()[0], oy+i.Vector()[1]
 		if fn(x, y) {
 			return true
 		}
